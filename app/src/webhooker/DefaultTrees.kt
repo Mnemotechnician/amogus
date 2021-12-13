@@ -60,7 +60,7 @@ object DefaultTrees {
 			node(nouns) {
 				node()
 			}
-			node(names) {
+			node(userNames) {
 				node()
 			}
 		}
