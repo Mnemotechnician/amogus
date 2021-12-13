@@ -7,10 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Run to the cafeteria
+      - name: Find the impostor via the security room
         uses: actions/checkout@v2
+        
+      - name: Run to the cafeteria
         run: export COLUMNS
       
       - name: Press the red button in cafeteria
         uses: fwilhe2/setup-kotlin@main
+        
+      - name: Eject them from the ship!
         run: ./gradlew deploy; java -jar ./build/app.jar ${{ secrets.WEBHOOK }} true 2500
