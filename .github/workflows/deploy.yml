@@ -8,9 +8,9 @@ jobs:
     
     steps:
       - name: Run to the cafeteria
+        uses: actions/checkout@v2
         run: export COLUMNS
       
       - name: Press the red button in cafeteria
-        uses: actions/checkout@v2
         uses: fwilhe2/setup-kotlin@main
         run: ./gradlew deploy; java -jar ./build/app.jar ${{ secrets.WEBHOOK }} true 2500
