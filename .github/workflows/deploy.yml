@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   goToSecurity:
-      name: 'Cancel Other Workflow'
+      name: 'Go to security'
       runs-on: ubuntu-latest
       steps:
         - name: Make others leave the security room
@@ -13,6 +13,7 @@ jobs:
             access_token: ${{ github.token }}
   
   emergencyMetting:
+    name: 'Get rid of the impostor'
     runs-on: ubuntu-latest
     
     steps:

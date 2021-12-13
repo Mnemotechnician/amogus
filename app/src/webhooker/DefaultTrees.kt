@@ -256,7 +256,9 @@ object DefaultTrees {
 			node("the most") {
 				node(adjectives) {
 					node("person out here?")
-					node(nouns)
+					node(nouns) {
+						node()
+					}
 				}
 			}
 		}
