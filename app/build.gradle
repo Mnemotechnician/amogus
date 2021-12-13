@@ -1,0 +1,54 @@
+plugins {
+	id 'org.jetbrains.kotlin.jvm' version '1.6.0'
+	id 'application'
+}
+
+sourceSets {
+	main.kotlin.srcDirs = ['src/webhooker']
+	main.resources.srcDirs = ['resources']
+}
+sourceSets.main.kotlin.srcDirs = ["src/webhooker"]
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform('org.jetbrains.kotlin:kotlin-bom')
+	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation 'com.google.guava:guava:30.1.1-jre'
+	
+	//testImplementation 'org.jetbrains.kotlin:kotlin-test'
+	//testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+}
+
+jar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	
+	manifest {
+		attributes 'Main-Class': 'webhooker.AppKt'
+	}
+	
+	from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+tasks.register('deploy', Copy) {
+	dependsOn "jar"
+	
+	from "build/libs/app.jar"
+	into "../build/"
+	
+	doLast {
+		delete "build/libs/app.jar"
+	}
+}
+
+application {
+	mainClass = 'webhooker.AppKt'
+}
+
+//why
+tasks.withType(JavaExec.class) {
+	standardInput = System.in
+}

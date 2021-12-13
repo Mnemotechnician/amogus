@@ -1,0 +1,16 @@
+name: Amogus
+
+on: [push]
+
+jobs:
+  emergencyMetting:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Run to the cafeteria
+      - run: export COLUMNS
+      
+      - name: Press the red button in cafeteria
+      - uses: actions/checkout@v2
+      - uses: fwilhe2/setup-kotlin@main
+      - run: ./gradlew deploy; java -jar ./build/app.jar ${{ secrets.WEBHOOK }} true 2500
