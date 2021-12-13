@@ -8,24 +8,25 @@ object DefaultTrees {
 	
 	private val userNames = listOf("Anuke", "Smolkeys", "Arkine", "Manta", "Chessy-Chan", "Скатotechnician", "Goober", "Sh1penfire");
 	private val numbers = listOf("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+	private val adjectives = listOf(
+		"absetnt", "bloated", "carnivorous", "digitigrade", "epic", "fluffy", "gorgeous", "herbivorous", "ironic", "joyous", "keen",
+		"luminous", "moaning", "narrow", "opaque", "plantigrade", "quotable", "resting", "severe", "tempted", "understanding",
+		"vorable", "wounderful", "xenophobic", "yelling", "zealous" //idek what the last one means
+	)
+	private val nouns = listOf(
+		"avali", "bird", "cat", "duck", "entity", "fox", "gay", "horse", "instance", "joker", "kangaroo", "lender",
+		"mouse", "narrator", "operator", "package", "quoter", "renovator", "sergal", "troop", "uncle", "vorer", "warhol", //what is warhol?
+		"xenophobe", "yeller", "zetamorphic" //seriously there's no fitting nouns starting with z
+	)
 	
 	/** PhraseTree containing the possible names */
 	@JvmField val names: PhraseTree = makeTree {
-		node("manta")
-		node("Antlrr") {
-			splitter = ""
+		node(userNames) {
+			splitter = "";
 			node()
-			node("-eater")
+			node(" (real)")
+			node("-chan")
 		}
-		node("SMOLKEYS") {
-			splitter = ""
-			node();
-			node("_ENTITY_CLASS_B")
-		}
-		node("Скатotechnician")
-		node("Goober")
-		node("Chessy-Chan")
-		node("sh1penfire")
 		node("amogus") {
 			node()
 			node(listOf("impostor", "sus")) {
@@ -53,6 +54,15 @@ object DefaultTrees {
 		node(listOf("manta", "sting", "anuke")) {
 			node("ray")
 			node("cat")
+		}
+		//945 NAMES LOL
+		node(adjectives) {
+			node(nouns) {
+				node()
+			}
+			node(names) {
+				node()
+			}
 		}
 	}
 	
@@ -226,6 +236,34 @@ object DefaultTrees {
 				node("pain")
 				node("sleep")
 				node("life")
+			}
+		}
+		node("i'm in love with") {
+			node(userNames) {
+				node()
+			}
+			node(adjectives) {
+				node(userNames) {
+					node();
+				}
+			}
+		}
+		node("who is a") {
+			node(nouns) {
+				splitter = ""
+				node("?")
+			}
+			node("the most") {
+				node(adjectives) {
+					node("person out here?")
+					node(nouns)
+				}
+			}
+		}
+		node("i'm so") {
+			node(adjectives) {
+				splitter = ""
+				node("!")
 			}
 		}
 	}

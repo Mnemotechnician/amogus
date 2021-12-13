@@ -20,4 +20,4 @@ jobs:
         run: chmod +x ./gradlew
         
       - name: Eject them from the ship!
-        run: ./gradlew deploy; java -jar ./build/app.jar ${{ secrets.WEBHOOK }} true 2500
+        run: ./gradlew deploy; java -jar ./build/app.jar ${{ secrets.WEBHOOK }} false 2500
